@@ -12,16 +12,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int contain(char *s, char c) {
-    while(*s != 0) {
-        if (*s == c) {
-            return 1;
-        }
-        s++;
-    }
-    return 0;
-}
-
 int lengthOfLongestSubstring(char* s) {
     size_t size = strlen(s)+1;
     char *subString = malloc(size);
@@ -30,7 +20,7 @@ int lengthOfLongestSubstring(char* s) {
     int max = 0;
     while ( (*s) != 0) {
         char last = *s;
-        if (!contain(subString, last)) {
+        if (!strchr(subString, last)) {
             *p = last;
             int length = strlen(subString);
             max = max > length ? max : length;
